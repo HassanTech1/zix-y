@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Line, LineChart, CartesianGrid, XAxis, Tooltip, ResponsiveContainer } from "recharts";
@@ -8,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ChartTooltipContent } from "@/components/ui/chart";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Cpu } from "lucide-react";
 
 const chartData = [
@@ -22,6 +23,17 @@ const chartData = [
   { time: "12:35", cpu: 55, gpu: 65 },
 ];
 
+const chartConfig = {
+    cpu: {
+      label: "CPU",
+      color: "hsl(var(--primary))",
+    },
+    gpu: {
+      label: "GPU",
+      color: "hsl(var(--accent))",
+    },
+};
+
 export function PerformanceChart() {
   return (
     <Card>
@@ -34,41 +46,43 @@ export function PerformanceChart() {
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                data={chartData}
-                margin={{ top: 5, right: 10, left: -10, bottom: 0 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis
-                  dataKey="time"
-                  stroke="hsl(var(--muted-foreground))"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={false}
-                />
-                <Tooltip
-                  cursor={{ stroke: "hsl(var(--accent))", strokeWidth: 2, strokeDasharray: "3 3" }}
-                  content={<ChartTooltipContent indicator="dot" />}
-                />
-                <Line
-                  dataKey="cpu"
-                  type="monotone"
-                  stroke="hsl(var(--primary))"
-                  strokeWidth={2}
-                  dot={false}
-                  name="CPU (%)"
-                />
-                <Line
-                  dataKey="gpu"
-                  type="monotone"
-                  stroke="hsl(var(--accent))"
-                  strokeWidth={2}
-                  dot={false}
-                  name="GPU (%)"
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            <ChartContainer config={chartConfig} className="h-full w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={chartData}
+                  margin={{ top: 5, right: 10, left: -10, bottom: 0 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis
+                    dataKey="time"
+                    stroke="hsl(var(--muted-foreground))"
+                    fontSize={12}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <ChartTooltip
+                    cursor={{ stroke: "hsl(var(--accent))", strokeWidth: 2, strokeDasharray: "3 3" }}
+                    content={<ChartTooltipContent indicator="dot" />}
+                  />
+                  <Line
+                    dataKey="cpu"
+                    type="monotone"
+                    stroke="var(--color-cpu)"
+                    strokeWidth={2}
+                    dot={false}
+                    name="CPU (%)"
+                  />
+                  <Line
+                    dataKey="gpu"
+                    type="monotone"
+                    stroke="var(--color-gpu)"
+                    strokeWidth={2}
+                    dot={false}
+                    name="GPU (%)"
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </ChartContainer>
         </div>
       </CardContent>
     </Card>

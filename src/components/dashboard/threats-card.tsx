@@ -9,14 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { ShieldAlert, Bot, FileText, Send } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -25,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 
 const threats = [
   { alert: "Unexpected Obstacle", time: "14:32:10", system: "LIDAR", status: "Critical" },
@@ -42,6 +35,21 @@ const ChatMessage = ({ author, message, avatar }: { author: string; message: str
         </div>
     </div>
 )
+
+const getStatusColor = (status: string) => {
+    switch (status) {
+        case "Critical":
+        return "bg-red-500";
+        case "High":
+        return "bg-yellow-500";
+        case "Medium":
+        return "bg-orange-500";
+        case "Low":
+        return "bg-blue-500";
+        default:
+        return "bg-gray-500";
+    }
+}
 
 export function ThreatsCard() {
     const [note, setNote] = useState("");
@@ -71,37 +79,34 @@ export function ThreatsCard() {
               <Bot className="mr-2 h-4 w-4" /> AI Chat
             </TabsTrigger>
           </TabsList>
-          <TabsContent value="indicators" className="mt-4">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Alert</TableHead>
-                  <TableHead>System</TableHead>
-                  <TableHead>Time</TableHead>
-                  <TableHead className="text-right">Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {threats.map((threat) => (
-                  <TableRow key={threat.alert}>
-                    <TableCell className="font-medium">{threat.alert}</TableCell>
-                    <TableCell>{threat.system}</TableCell>
-                    <TableCell>{threat.time}</TableCell>
-                    <TableCell className="text-right">
+          <TabsContent value="indicators" className="mt-4 pt-8">
+            <div className="relative w-full">
+              <div className="absolute top-1/2 left-0 w-full h-0.5 bg-border -translate-y-1/2"></div>
+              <div className="relative flex justify-between">
+                {threats.map((threat, index) => (
+                  <div key={index} className="flex flex-col items-center group">
+                    <div className="relative">
+                      <div className={cn("w-4 h-4 rounded-full z-10 relative", getStatusColor(threat.status))}></div>
+                    </div>
+                    <div className="absolute top-full mt-2 w-40 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-card p-2 rounded-lg border shadow-lg z-20">
+                      <p className="font-bold text-sm">{threat.alert}</p>
+                      <p className="text-xs text-muted-foreground">{threat.system}</p>
+                      <p className="text-xs text-muted-foreground">{threat.time}</p>
                       <Badge
                         variant={
                           threat.status === "Critical" || threat.status === "High"
                             ? "destructive"
                             : "secondary"
                         }
+                        className="mt-1"
                       >
                         {threat.status}
                       </Badge>
-                    </TableCell>
-                  </TableRow>
+                    </div>
+                  </div>
                 ))}
-              </TableBody>
-            </Table>
+              </div>
+            </div>
           </TabsContent>
           <TabsContent value="notes" className="mt-4">
             <div className="flex flex-col gap-4">

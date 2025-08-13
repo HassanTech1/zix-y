@@ -16,7 +16,9 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader>
         <Link href="/" className="flex items-center gap-2.5">
-          <Icons.logo className="w-8 h-8 text-primary" />
+          <div className="rounded-md overflow-hidden">
+            <Icons.logo className="w-8 h-8 text-primary" />
+          </div>
           <h1 className="font-bold text-xl text-sidebar-primary tracking-tighter group-data-[collapsible=icon]:hidden">
             ZiaXen
           </h1>

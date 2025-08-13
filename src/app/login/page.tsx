@@ -38,7 +38,7 @@ export default function LoginPage() {
        <div className="flex items-center justify-center bg-muted/30 p-8">
          <Card className="mx-auto w-full max-w-sm border-0 shadow-none sm:border sm:shadow-sm">
            <CardHeader className="space-y-2 text-center">
-               <div className="inline-block mx-auto">
+               <div className="inline-block mx-auto rounded-md overflow-hidden">
                <Icons.logo className="w-16 h-16 text-primary" />
                </div>
              <CardTitle className="text-2xl font-bold">Welcome to ZiaXen</CardTitle>

@@ -12,7 +12,12 @@ export const Icons = {
       strokeLinejoin="round"
       {...props}
     >
-      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+      <path d="M4 4h16v16H4z" fill="currentColor" stroke="none" />
+      <path
+        d="M9.414 8L12 10.586 14.586 8 16 9.414 13.414 12 16 14.586 14.586 16 12 13.414 9.414 16 8 14.586 10.586 12 8 9.414 9.414 8z"
+        fill="hsl(var(--background))"
+        stroke="none"
+      />
     </svg>
   ),
 };

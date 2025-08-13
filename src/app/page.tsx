@@ -20,32 +20,37 @@ export default function DashboardPage() {
         <AppHeader />
         <main className="p-4 sm:p-6 lg:p-8 space-y-6">
           <ThreatSummaryCard />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <div className="lg:col-span-2 xl:col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="md:col-span-2 lg:col-span-2">
               <VehicleStatusCard />
             </div>
-            <div className="lg:col-span-1 xl:col-span-2">
+            <div className="md:col-span-2 lg:col-span-2">
               <VehicleVitalsCard />
             </div>
-            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
+
+            <div className="md:col-span-2 lg:col-span-4">
               <AttackDetailsCard />
             </div>
-            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
-               <MapCard />
+            
+            <div className="md:col-span-2 lg:col-span-4">
+              <MapCard />
             </div>
-            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
+
+            <div className="md:col-span-2 lg:col-span-4">
               <VehicleDetailsCard />
             </div>
-            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-2">
+            
+            <div className="md:col-span-2 lg:col-span-2">
               <ThreatsCard />
             </div>
-            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-2">
+            <div className="md:col-span-2 lg:col-span-2">
               <AiChatCard />
             </div>
-            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-2">
+
+            <div className="md:col-span-2 lg:col-span-2">
               <PerformanceChart />
             </div>
-            <div className="lg:col-span-1 xl:col-span-2">
+            <div className="md:col-span-2 lg:col-span-2">
               <QuickActionsCard />
             </div>
           </div>

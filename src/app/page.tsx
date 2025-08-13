@@ -8,6 +8,7 @@ import { VehicleDetailsCard } from "@/components/dashboard/vehicle-details-card"
 import { PerformanceChart } from "@/components/dashboard/performance-chart";
 import { ThreatsCard } from "@/components/dashboard/threats-card";
 import { ThreatSummaryCard } from "@/components/dashboard/threat-summary-card";
+import { MapCard } from "@/components/dashboard/map-card";
 
 export default function DashboardPage() {
   return (
@@ -23,6 +24,9 @@ export default function DashboardPage() {
             </div>
             <div className="lg:col-span-1 xl:col-span-2">
               <VehicleVitalsCard />
+            </div>
+            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
+               <MapCard />
             </div>
             <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
               <ThreatsCard />

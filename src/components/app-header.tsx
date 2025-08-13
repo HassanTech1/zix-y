@@ -1,8 +1,9 @@
-import { Search } from "lucide-react";
+import { LayoutGrid, PlusCircle, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { UserNav } from "@/components/user-nav";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ThemeToggle } from "./theme-toggle";
+import { Button } from "./ui/button";
 
 export function AppHeader() {
   return (
@@ -20,6 +21,12 @@ export function AppHeader() {
           </div>
         </form>
       </div>
+      <Button variant="ghost" size="icon">
+        <LayoutGrid className="h-5 w-5" />
+      </Button>
+      <Button variant="ghost" size="icon">
+        <PlusCircle className="h-5 w-5" />
+      </Button>
       <ThemeToggle />
       <UserNav />
     </header>

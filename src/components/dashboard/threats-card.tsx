@@ -20,10 +20,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
 const threats = [
-  { alert: "Unexpected Obstacle", time: "14:32:10", system: "LIDAR", status: "Critical" },
-  { alert: "GPS Signal Lost", time: "14:31:55", system: "Navigation", status: "High" },
-  { alert: "Camera Occlusion", time: "14:30:02", system: "Perception", status: "Medium" },
-  { alert: "Low Tire Pressure", time: "14:28:45", system: "Vehicle Health", status: "Low" },
+    { time: "14:37:12", description: "Abnormal CAN frames detected" },
+    { time: "14:37:32", description: "Repeated spoofing frames" },
+    { time: "14:36:05", description: "ECU throttle command blocked" },
+    { time: "14:38:50", description: "Agent mitigated anomaly" },
 ];
 
 const ChatMessage = ({ author, message, avatar }: { author: string; message: string; avatar: React.ReactNode }) => (
@@ -35,21 +35,6 @@ const ChatMessage = ({ author, message, avatar }: { author: string; message: str
         </div>
     </div>
 )
-
-const getStatusColor = (status: string) => {
-    switch (status) {
-        case "Critical":
-        return "bg-red-500";
-        case "High":
-        return "bg-yellow-500";
-        case "Medium":
-        return "bg-orange-500";
-        case "Low":
-        return "bg-blue-500";
-        default:
-        return "bg-gray-500";
-    }
-}
 
 export function ThreatsCard() {
     const [note, setNote] = useState("");
@@ -79,33 +64,18 @@ export function ThreatsCard() {
               <Bot className="mr-2 h-4 w-4" /> AI Chat
             </TabsTrigger>
           </TabsList>
-          <TabsContent value="indicators" className="mt-4 pt-8">
-            <div className="relative w-full">
-              <div className="absolute top-1/2 left-0 w-full h-0.5 bg-border -translate-y-1/2"></div>
-              <div className="relative flex justify-between">
+          <TabsContent value="indicators" className="mt-4 pt-4">
+            <div className="relative pl-6">
+                <div className="absolute left-6 top-0 bottom-0 w-px bg-border -translate-x-1/2"></div>
                 {threats.map((threat, index) => (
-                  <div key={index} className="flex flex-col items-center group">
-                    <div className="relative">
-                      <div className={cn("w-4 h-4 rounded-full z-10 relative", getStatusColor(threat.status))}></div>
+                    <div key={index} className="relative flex items-start gap-4 mb-6">
+                        <div className="absolute left-0 top-1 w-3 h-3 rounded-full bg-primary -translate-x-1/2"></div>
+                        <div className="pl-4">
+                            <p className="text-sm text-muted-foreground">{threat.time}</p>
+                            <p className="font-medium">{threat.description}</p>
+                        </div>
                     </div>
-                    <div className="absolute top-full mt-2 w-40 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-card p-2 rounded-lg border shadow-lg z-20">
-                      <p className="font-bold text-sm">{threat.alert}</p>
-                      <p className="text-xs text-muted-foreground">{threat.system}</p>
-                      <p className="text-xs text-muted-foreground">{threat.time}</p>
-                      <Badge
-                        variant={
-                          threat.status === "Critical" || threat.status === "High"
-                            ? "destructive"
-                            : "secondary"
-                        }
-                        className="mt-1"
-                      >
-                        {threat.status}
-                      </Badge>
-                    </div>
-                  </div>
                 ))}
-              </div>
             </div>
           </TabsContent>
           <TabsContent value="notes" className="mt-4">

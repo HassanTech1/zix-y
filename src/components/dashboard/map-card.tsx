@@ -1,4 +1,8 @@
-import Image from "next/image";
+
+"use client";
+
+import React from "react";
+import { GoogleMap, useJsApiLoader, MarkerF } from "@react-google-maps/api";
 import {
   Card,
   CardContent,
@@ -9,8 +13,50 @@ import {
 import { Button } from "@/components/ui/button";
 import { Map, Pin, ZoomIn, ZoomOut, Navigation, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const containerStyle = {
+  width: '100%',
+  height: '400px'
+};
+
+const center = {
+  lat: 37.7749,
+  lng: -122.4194
+};
 
 export function MapCard() {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""
+  });
+
+  const [map, setMap] = React.useState<google.maps.Map | null>(null);
+
+  const onUnmount = React.useCallback(function callback(map: google.maps.Map) {
+    setMap(null)
+  }, []);
+
+  const onZoomIn = () => {
+    if (map) {
+      const currentZoom = map.getZoom() || 0;
+      map.setZoom(currentZoom + 1);
+    }
+  }
+
+  const onZoomOut = () => {
+    if (map) {
+      const currentZoom = map.getZoom() || 0;
+      map.setZoom(currentZoom - 1);
+    }
+  }
+
+  const onRecenter = () => {
+    if (map) {
+      map.panTo(center);
+    }
+  }
+
   return (
     <Card className="overflow-hidden">
       <CardHeader>
@@ -23,14 +69,31 @@ export function MapCard() {
         </CardDescription>
       </CardHeader>
       <CardContent className="p-0 relative">
-        <Image
-          src="https://placehold.co/1200x400.png"
-          width={1200}
-          height={400}
-          alt="Map of vehicle location"
-          className="w-full h-auto"
-          data-ai-hint="map"
-        />
+        {isLoaded ? (
+          <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={center}
+            zoom={13}
+            onLoad={setMap}
+            onUnmount={onUnmount}
+            options={{
+              disableDefaultUI: true,
+              streetViewControl: false,
+              mapTypeControl: false
+            }}
+          >
+            <MarkerF position={center} icon={{
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 10,
+                fillColor: "hsl(var(--primary))",
+                fillOpacity: 1,
+                strokeWeight: 0
+            }}/>
+             <MarkerF position={center} />
+          </GoogleMap>
+        ) : (
+          <Skeleton className="w-full h-[400px]" />
+        )}
         <div className="absolute top-4 left-4 flex flex-col gap-2">
           <div className="flex bg-background rounded-md p-1 items-center">
             <Input
@@ -44,18 +107,15 @@ export function MapCard() {
           </div>
         </div>
         <div className="absolute bottom-4 right-4 flex flex-col gap-2">
-          <Button variant="outline" size="icon" className="bg-background">
+          <Button variant="outline" size="icon" className="bg-background" onClick={onZoomIn}>
             <ZoomIn />
           </Button>
-          <Button variant="outline" size="icon" className="bg-background">
+          <Button variant="outline" size="icon" className="bg-background" onClick={onZoomOut}>
             <ZoomOut />
           </Button>
-          <Button variant="outline" size="icon" className="bg-background">
+          <Button variant="outline" size="icon" className="bg-background" onClick={onRecenter}>
             <Navigation />
           </Button>
-        </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <Pin className="w-8 h-8 text-primary fill-primary" />
         </div>
       </CardContent>
     </Card>

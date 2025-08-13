@@ -10,6 +10,7 @@ import { ThreatsCard } from "@/components/dashboard/threats-card";
 import { ThreatSummaryCard } from "@/components/dashboard/threat-summary-card";
 import { MapCard } from "@/components/dashboard/map-card";
 import { AiChatCard } from "@/components/dashboard/ai-chat-card";
+import { AttackDetailsCard } from "@/components/dashboard/attack-details-card";
 
 export default function DashboardPage() {
   return (
@@ -27,6 +28,9 @@ export default function DashboardPage() {
               <VehicleVitalsCard />
             </div>
             <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
+              <AttackDetailsCard />
+            </div>
+            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
                <MapCard />
             </div>
             <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
@@ -41,7 +45,7 @@ export default function DashboardPage() {
             <div className="sm:col-span-2 lg:col-span-3 xl:col-span-2">
               <PerformanceChart />
             </div>
-            <div className="lg:col-span-1 xl:col-span-1">
+            <div className="lg:col-span-1 xl:col-span-2">
               <QuickActionsCard />
             </div>
           </div>

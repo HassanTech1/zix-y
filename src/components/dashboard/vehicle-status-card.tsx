@@ -1,8 +1,7 @@
 
 "use client";
 
-import { Suspense } from "react";
-import dynamic from "next/dynamic";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -11,11 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Car } from "lucide-react";
-
-const CarModel = dynamic(() => import("./car-model").then(mod => mod.CarModel), {
-  ssr: false,
-  loading: () => <div className="w-full h-full bg-muted animate-pulse" />
-});
 
 const StatusIndicator = ({ label, operational }: { label: string; operational: boolean }) => (
     <div className="flex items-center gap-2">
@@ -37,9 +31,14 @@ export function VehicleStatusCard() {
       </CardHeader>
       <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="relative aspect-video overflow-hidden rounded-lg border">
-          <Suspense fallback={<div className="w-full h-full bg-muted animate-pulse" />}>
-            <CarModel />
-          </Suspense>
+          <Image
+            src="https://placehold.co/800x450.png"
+            alt="Vehicle view"
+            width={800}
+            height={450}
+            className="w-full h-full object-cover"
+            data-ai-hint="futuristic car"
+          />
         </div>
         <div className="flex flex-col justify-center space-y-4">
             <StatusIndicator label="System Status" operational={true} />

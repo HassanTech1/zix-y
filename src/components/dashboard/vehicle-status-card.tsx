@@ -1,4 +1,7 @@
-import Image from "next/image";
+
+"use client";
+
+import { Suspense } from "react";
 import {
   Card,
   CardContent,
@@ -7,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Car } from "lucide-react";
+import { CarModel } from "./car-model";
 
 const StatusIndicator = ({ label, operational }: { label: string; operational: boolean }) => (
     <div className="flex items-center gap-2">
@@ -27,15 +31,10 @@ export function VehicleStatusCard() {
         <CardDescription>Overall system status overview.</CardDescription>
       </CardHeader>
       <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="relative aspect-video overflow-hidden rounded-lg">
-          <Image
-            src="https://placehold.co/600x400.png"
-            alt="Vehicle"
-            width={600}
-            height={400}
-            className="object-cover w-full h-full"
-            data-ai-hint="futuristic car"
-          />
+        <div className="relative aspect-video overflow-hidden rounded-lg border">
+          <Suspense fallback={<div className="w-full h-full bg-muted animate-pulse" />}>
+            <CarModel />
+          </Suspense>
         </div>
         <div className="flex flex-col justify-center space-y-4">
             <StatusIndicator label="System Status" operational={true} />

@@ -7,6 +7,7 @@ import { QuickActionsCard } from "@/components/dashboard/quick-actions-card";
 import { VehicleDetailsCard } from "@/components/dashboard/vehicle-details-card";
 import { PerformanceChart } from "@/components/dashboard/performance-chart";
 import { ThreatsCard } from "@/components/dashboard/threats-card";
+import { ThreatSummaryCard } from "@/components/dashboard/threat-summary-card";
 
 export default function DashboardPage() {
   return (
@@ -14,7 +15,8 @@ export default function DashboardPage() {
       <AppSidebar />
       <SidebarInset>
         <AppHeader />
-        <main className="p-4 sm:p-6 lg:p-8">
+        <main className="p-4 sm:p-6 lg:p-8 space-y-6">
+          <ThreatSummaryCard />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <div className="lg:col-span-2 xl:col-span-2">
               <VehicleStatusCard />

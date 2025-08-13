@@ -29,6 +29,9 @@ export default function DashboardPage() {
             <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
                <MapCard />
             </div>
+            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
+              <VehicleDetailsCard />
+            </div>
             <div className="sm:col-span-2 lg:col-span-3 xl:col-span-2">
               <ThreatsCard />
             </div>
@@ -37,9 +40,6 @@ export default function DashboardPage() {
             </div>
             <div className="sm:col-span-2 lg:col-span-3 xl:col-span-2">
               <PerformanceChart />
-            </div>
-            <div className="lg:col-span-2 xl:col-span-1">
-              <VehicleDetailsCard />
             </div>
             <div className="lg:col-span-1 xl:col-span-1">
               <QuickActionsCard />

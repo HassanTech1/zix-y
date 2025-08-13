@@ -2,7 +2,7 @@ import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AppHeader } from "@/components/app-header";
 import { VehicleStatusCard } from "@/components/dashboard/vehicle-status-card";
-import { LiveFeedCard } from "@/components/dashboard/live-feed-card";
+import { VehicleVitalsCard } from "@/components/dashboard/vehicle-vitals-card";
 import { QuickActionsCard } from "@/components/dashboard/quick-actions-card";
 import { VehicleDetailsCard } from "@/components/dashboard/vehicle-details-card";
 import { PerformanceChart } from "@/components/dashboard/performance-chart";
@@ -22,7 +22,7 @@ export default function DashboardPage() {
               <VehicleStatusCard />
             </div>
             <div className="lg:col-span-1 xl:col-span-2">
-              <LiveFeedCard />
+              <VehicleVitalsCard />
             </div>
             <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4">
               <ThreatsCard />

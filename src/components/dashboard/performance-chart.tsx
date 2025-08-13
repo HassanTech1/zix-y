@@ -77,7 +77,7 @@ export function PerformanceChart() {
           <TabsContent value="cpu-gpu">
             <div className="h-[300px] w-full pt-4">
               <ChartContainer config={chartConfig} className="h-full w-full">
-                <LineChart
+                <AreaChart
                   data={chartData}
                   margin={{ top: 5, right: 10, left: -10, bottom: 0 }}
                 >
@@ -90,30 +90,38 @@ export function PerformanceChart() {
                     axisLine={false}
                   />
                   <ChartTooltip
-                    cursor={{
-                      stroke: "hsl(var(--accent))",
-                      strokeWidth: 2,
-                      strokeDasharray: "3 3",
-                    }}
+                    cursor={false}
                     content={<ChartTooltipContent indicator="dot" />}
                   />
-                  <Line
+                  <defs>
+                    <linearGradient id="colorCpu" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="var(--color-cpu)" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="var(--color-cpu)" stopOpacity={0.1}/>
+                    </linearGradient>
+                    <linearGradient id="colorGpu" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="var(--color-gpu)" stopOpacity={0.8}/>
+                        <stop offset="95%" stopColor="var(--color-gpu)" stopOpacity={0.1}/>
+                    </linearGradient>
+                  </defs>
+                  <Area
                     dataKey="cpu"
                     type="monotone"
+                    fill="url(#colorCpu)"
                     stroke="var(--color-cpu)"
                     strokeWidth={2}
                     dot={false}
                     name="CPU (%)"
                   />
-                  <Line
+                  <Area
                     dataKey="gpu"
                     type="monotone"
+                    fill="url(#colorGpu)"
                     stroke="var(--color-gpu)"
                     strokeWidth={2}
                     dot={false}
                     name="GPU (%)"
                   />
-                </LineChart>
+                </AreaChart>
               </ChartContainer>
             </div>
           </TabsContent>

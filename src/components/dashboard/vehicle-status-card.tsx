@@ -2,6 +2,7 @@
 "use client";
 
 import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import {
   Card,
   CardContent,
@@ -10,7 +11,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Car } from "lucide-react";
-import { CarModel } from "./car-model";
+
+const CarModel = dynamic(() => import("./car-model").then(mod => mod.CarModel), {
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-muted animate-pulse" />
+});
 
 const StatusIndicator = ({ label, operational }: { label: string; operational: boolean }) => (
     <div className="flex items-center gap-2">

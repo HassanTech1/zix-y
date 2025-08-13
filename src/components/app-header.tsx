@@ -2,6 +2,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { UserNav } from "@/components/user-nav";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { ThemeToggle } from "./theme-toggle";
 
 export function AppHeader() {
   return (
@@ -19,6 +20,7 @@ export function AppHeader() {
           </div>
         </form>
       </div>
+      <ThemeToggle />
       <UserNav />
     </header>
   );

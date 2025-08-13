@@ -33,11 +33,11 @@ export function VehicleStatusCard() {
         <div className="relative aspect-video overflow-hidden rounded-lg border">
           <Image
             src="https://placehold.co/800x450.png"
-            alt="Vehicle view"
+            alt="Tesla car"
             width={800}
             height={450}
             className="w-full h-full object-cover"
-            data-ai-hint="futuristic car"
+            data-ai-hint="Tesla car"
           />
         </div>
         <div className="flex flex-col justify-center space-y-4">

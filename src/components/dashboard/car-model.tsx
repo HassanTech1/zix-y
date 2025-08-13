@@ -3,7 +3,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, useGLTF } from "@react-three/drei";
-import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
+import { GLTF } from "three-stdlib";
 
 interface GLTFResult extends GLTF {
   nodes: {
@@ -17,7 +17,7 @@ interface GLTFResult extends GLTF {
 const Model = () => {
   const { nodes, materials } = useGLTF(
     "/car.glb"
-  ) as GLTFResult;
+  ) as unknown as GLTFResult;
 
   return (
     <group dispose={null}>

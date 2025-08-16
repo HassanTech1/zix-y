@@ -15,13 +15,10 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <Link href="/" className="flex items-center gap-2.5">
+        <Link href="/" className="flex items-center justify-center group-data-[collapsible=false]:justify-start group-data-[collapsible=false]:gap-2.5">
           <div className="rounded-md overflow-hidden">
             <Icons.logo className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="font-bold text-xl text-sidebar-primary tracking-tighter group-data-[collapsible=icon]:hidden">
-            ZiaXen
-          </h1>
         </Link>
       </SidebarHeader>
       <SidebarContent>

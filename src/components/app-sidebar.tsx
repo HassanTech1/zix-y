@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import {
   Sidebar,
@@ -9,7 +10,6 @@ import {
 } from "@/components/ui/sidebar";
 import { Icons } from "@/components/icons";
 import { Home, Shield, Search, Book, Ticket, Bot, Siren, Settings, CircleAlert } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export function AppSidebar() {
   return (

@@ -15,66 +15,55 @@ export function AppSidebar() {
   return (
     <Sidebar variant="floating" collapsible="icon">
       <SidebarContent>
-        <SidebarMenu className="items-center">
+        <div className="flex justify-center p-2 mb-4">
+            <Icons.logo className="h-8 w-8 text-sidebar-foreground" />
+        </div>
+        <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Home">
+            <SidebarMenuButton href="#" className="h-10 w-10 p-0" tooltip="Home">
               <Home />
-              <span className="text-xs">Home</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton href="/" isActive className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Alerts">
+            <SidebarMenuButton href="/" isActive className="h-10 w-10 p-0" tooltip="Alerts">
               <Shield />
-              <span className="text-xs">Alerts</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Search">
+            <SidebarMenuButton href="#" className="h-10 w-10 p-0" tooltip="Search">
               <Search />
-              <span className="text-xs">Search</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Runbook">
+            <SidebarMenuButton href="#" className="h-10 w-10 p-0" tooltip="Runbook">
               <Book />
-              <span className="text-xs">Runbook</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Tickets">
+            <SidebarMenuButton href="#" className="h-10 w-10 p-0" tooltip="Tickets">
               <Ticket />
-              <span className="text-xs">Tickets</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Automation">
+            <SidebarMenuButton href="#" className="h-10 w-10 p-0" tooltip="Automation">
               <Bot />
-              <span className="text-xs">Automation</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Escalation">
+            <SidebarMenuButton href="#" className="h-10 w-10 p-0" tooltip="Escalation">
               <Siren />
-              <span className="text-xs">Escalation</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarContent>
-      <SidebarFooter className="items-center">
+      <SidebarFooter>
         <SidebarMenu>
             <SidebarMenuItem>
-                <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Settings">
+                <SidebarMenuButton href="#" className="h-10 w-10 p-0" tooltip="Settings">
                     <Settings />
-                    <span className="text-xs">Settings</span>
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>
-        <div className="relative mt-4">
-          <Avatar className="h-10 w-10 bg-red-600 text-white">
-            <AvatarFallback className="bg-transparent font-bold">N</AvatarFallback>
-          </Avatar>
-          <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-white border-2 border-red-600" />
-        </div>
       </SidebarFooter>
     </Sidebar>
   );

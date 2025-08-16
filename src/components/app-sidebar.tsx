@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   Sidebar,
-  SidebarHeader,
   SidebarContent,
   SidebarMenu,
   SidebarMenuItem,
@@ -9,61 +8,73 @@ import {
   SidebarFooter
 } from "@/components/ui/sidebar";
 import { Icons } from "@/components/icons";
-import { Bot, Car, GanttChart, HardDrive, Settings, Shield } from "lucide-react";
+import { Home, Shield, Search, Book, Ticket, Bot, Siren, Settings, CircleAlert } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export function AppSidebar() {
   return (
-    <Sidebar>
-      <SidebarHeader>
-        <Link href="/" className="flex items-center justify-center group-data-[collapsible=false]:justify-start group-data-[collapsible=false]:gap-2.5">
-          <div className="rounded-md overflow-hidden">
-            <Icons.logo className="w-8 h-8 text-primary" />
-          </div>
-        </Link>
-      </SidebarHeader>
+    <Sidebar variant="floating" collapsible="icon">
       <SidebarContent>
-        <SidebarMenu>
+        <SidebarMenu className="items-center">
           <SidebarMenuItem>
-            <SidebarMenuButton href="/" isActive tooltip="Dashboard">
-              <GanttChart />
-              <span>Dashboard</span>
+            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Home">
+              <Home />
+              <span className="text-xs">Home</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton href="#" tooltip="Vehicles">
-              <Car />
-              <span>Vehicles</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton href="#" tooltip="AI Agents">
-              <Bot />
-              <span>AI Agents</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton href="#" tooltip="Threats">
+            <SidebarMenuButton href="/" isActive className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Alerts">
               <Shield />
-              <span>Threats</span>
+              <span className="text-xs">Alerts</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton href="#" tooltip="System Logs">
-              <HardDrive />
-              <span>System Logs</span>
+            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Search">
+              <Search />
+              <span className="text-xs">Search</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Runbook">
+              <Book />
+              <span className="text-xs">Runbook</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Tickets">
+              <Ticket />
+              <span className="text-xs">Tickets</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Automation">
+              <Bot />
+              <span className="text-xs">Automation</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Escalation">
+              <Siren />
+              <span className="text-xs">Escalation</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="items-center">
         <SidebarMenu>
             <SidebarMenuItem>
-                <SidebarMenuButton href="#" tooltip="Settings">
+                <SidebarMenuButton href="#" className="h-auto p-3 flex flex-col items-center gap-1.5" tooltip="Settings">
                     <Settings />
-                    <span>Settings</span>
+                    <span className="text-xs">Settings</span>
                 </SidebarMenuButton>
             </SidebarMenuItem>
         </SidebarMenu>
+        <div className="relative mt-4">
+          <Avatar className="h-10 w-10 bg-red-600 text-white">
+            <AvatarFallback className="bg-transparent font-bold">N</AvatarFallback>
+          </Avatar>
+          <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-white border-2 border-red-600" />
+        </div>
       </SidebarFooter>
     </Sidebar>
   );

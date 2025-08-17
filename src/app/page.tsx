@@ -26,15 +26,15 @@ export default function DashboardPage() {
   const [layouts, setLayouts] = useState({
     lg: [
       { i: "threat-summary", x: 0, y: 0, w: 12, h: 2 },
-      { i: "vehicle-status", x: 0, y: 2, w: 4, h: 5 },
-      { i: "vehicle-vitals", x: 4, y: 2, w: 4, h: 5 },
-      { i: "attack-details", x: 0, y: 7, w: 8, h: 5 },
-      { i: "map", x: 0, y: 12, w: 8, h: 9 },
-      { i: "vehicle-details", x: 0, y: 21, w: 8, h: 9 },
-      { i: "performance-chart", x: 0, y: 30, w: 4, h: 7 },
-      { i: "quick-actions", x: 4, y: 30, w: 4, h: 7 },
-      { i: "threats", x: 8, y: 2, w: 4, h: 10 },
-      { i: "ai-chat", x: 8, y: 12, w: 4, h: 8 },
+      { i: "vehicle-status", x: 0, y: 2, w: 3, h: 6 },
+      { i: "vehicle-vitals", x: 3, y: 2, w: 3, h: 6 },
+      { i: "threats", x: 6, y: 2, w: 6, h: 6 },
+      { i: "attack-details", x: 0, y: 8, w: 6, h: 7 },
+      { i: "ai-chat", x: 6, y: 8, w: 6, h: 7 },
+      { i: "map", x: 0, y: 15, w: 12, h: 10 },
+      { i: "vehicle-details", x: 0, y: 25, w: 12, h: 9 },
+      { i: "performance-chart", x: 0, y: 34, w: 6, h: 8 },
+      { i: "quick-actions", x: 6, y: 34, w: 6, h: 8 },
     ],
   });
 

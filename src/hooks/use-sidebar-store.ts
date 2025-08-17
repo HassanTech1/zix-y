@@ -1,6 +1,5 @@
 import { create } from "zustand"
 import { persist, createJSONStorage } from "zustand/middleware"
-import { useIsMobile } from "./use-mobile"
 
 interface SidebarState {
   open: boolean

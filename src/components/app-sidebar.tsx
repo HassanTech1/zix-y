@@ -24,7 +24,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collap
 
 
 const SidebarHeaderContent = () => {
-  const { state, toggleSidebar } = useSidebar();
+  const { toggleSidebar } = useSidebar();
   return (
     <div className="flex items-center justify-between p-4">
       <div className="flex items-center gap-2">

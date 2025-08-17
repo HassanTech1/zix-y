@@ -17,14 +17,14 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Icons } from "@/components/icons";
-import { Home, Shield, Search, Book, Ticket, Bot, Siren, Settings, LayoutGrid, FileText, Wallet, Bell, MessageSquare, Plus, ChevronRight, ChevronDown } from "lucide-react";
+import { Home, Shield, Search, Book, Ticket, Bot, Siren, Settings, LayoutGrid, FileText, Wallet, Bell, MessageSquare, Plus, ChevronRight, ChevronDown, ChevronsRightLeft } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "./ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
 
 
 const SidebarHeaderContent = () => {
-  const { state } = useSidebar();
+  const { state, toggleSidebar } = useSidebar();
   return (
     <div className="flex items-center justify-between p-2">
       <div className="flex items-center gap-2">
@@ -40,8 +40,8 @@ const SidebarHeaderContent = () => {
           </Avatar>
         )}
       </div>
-      <Button variant="ghost" size="icon" className="h-8 w-8 text-sidebar-foreground/70">
-        <ChevronRight className="h-4 w-4 transition-transform duration-300 group-data-[state=expanded]:rotate-180" />
+      <Button variant="ghost" size="icon" className="h-8 w-8 text-sidebar-foreground/70" onClick={toggleSidebar}>
+        <ChevronsRightLeft className="h-4 w-4 transition-transform duration-300 group-data-[state=expanded]:rotate-180" />
       </Button>
     </div>
   )

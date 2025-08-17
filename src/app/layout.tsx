@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
-  title: 'ZiaXen Dashboard',
+  title: 'ALHASAN AI Dashboard',
   description: 'AI-powered autonomous vehicle interface',
 };
 

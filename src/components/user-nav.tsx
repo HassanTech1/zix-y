@@ -19,16 +19,16 @@ export function UserNav() {
         <Button variant="ghost" className="relative h-10 w-10 rounded-full">
           <Avatar className="h-10 w-10">
             <AvatarImage src="https://placehold.co/100x100.png" alt="User avatar" data-ai-hint="person portrait" />
-            <AvatarFallback>ZX</AvatarFallback>
+            <AvatarFallback>AI</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">ZiaXen Operator</p>
+            <p className="text-sm font-medium leading-none">ALHASAN AI Operator</p>
             <p className="text-xs leading-none text-muted-foreground">
-              operator@ziaxen.com
+              operator@alhasanai.com
             </p>
           </div>
         </DropdownMenuLabel>

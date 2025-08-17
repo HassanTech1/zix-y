@@ -24,16 +24,13 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collap
 
 
 const SidebarHeaderContent = () => {
-  const { state } = useSidebar();
+  const { state, toggleSidebar } = useSidebar();
   return (
     <div className="flex items-center justify-between p-2">
       <div className="flex items-center gap-2">
-        
+        <Icons.logo className="w-auto h-7 text-sidebar-primary" />
         {state === 'expanded' && (
-          <Avatar className="h-8 w-8">
-            <AvatarImage src="https://placehold.co/100x100.png" alt="Andrew Smith" data-ai-hint="person portrait" />
-            <AvatarFallback>AS</AvatarFallback>
-          </Avatar>
+          <h1 className="text-lg font-bold text-sidebar-primary">ALHASAN AI</h1>
         )}
       </div>
     </div>
@@ -156,7 +153,7 @@ const CtaCard = () => {
 
 export function AppSidebar() {
   return (
-    <Sidebar variant="floating" collapsible="icon">
+    <Sidebar variant="floating" collapsible="none">
       <SidebarHeader>
         <SidebarHeaderContent />
         <SidebarProfile />

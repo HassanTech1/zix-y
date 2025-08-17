@@ -1,3 +1,11 @@
+
+"use client";
+
+import { useState } from "react";
+import { Responsive, WidthProvider } from "react-grid-layout";
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+
 import { SidebarProvider, Sidebar, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { AppHeader } from "@/components/app-header";
@@ -12,33 +20,70 @@ import { MapCard } from "@/components/dashboard/map-card";
 import { AiChatCard } from "@/components/dashboard/ai-chat-card";
 import { AttackDetailsCard } from "@/components/dashboard/attack-details-card";
 
+const ResponsiveGridLayout = WidthProvider(Responsive);
+
 export default function DashboardPage() {
+  const [layouts, setLayouts] = useState({
+    lg: [
+      { i: "threat-summary", x: 0, y: 0, w: 12, h: 2 },
+      { i: "vehicle-status", x: 0, y: 2, w: 4, h: 5 },
+      { i: "vehicle-vitals", x: 4, y: 2, w: 4, h: 5 },
+      { i: "attack-details", x: 0, y: 7, w: 8, h: 5 },
+      { i: "map", x: 0, y: 12, w: 8, h: 9 },
+      { i: "vehicle-details", x: 0, y: 21, w: 8, h: 9 },
+      { i: "performance-chart", x: 0, y: 30, w: 4, h: 7 },
+      { i: "quick-actions", x: 4, y: 30, w: 4, h: 7 },
+      { i: "threats", x: 8, y: 2, w: 4, h: 10 },
+      { i: "ai-chat", x: 8, y: 12, w: 4, h: 8 },
+    ],
+  });
+
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
         <AppHeader />
-        <main className="p-4 sm:p-6 lg:p-8 space-y-6">
-          <ThreatSummaryCard />
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <main className="p-4 sm:p-6 lg:p-8">
+          <ResponsiveGridLayout
+            className="layout"
+            layouts={layouts}
+            onLayoutChange={(layout, newLayouts) => setLayouts(newLayouts)}
+            breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+            cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
+            rowHeight={30}
+            draggableHandle=".drag-handle"
+          >
+            <div key="threat-summary" className="overflow-hidden">
+                <ThreatSummaryCard />
+            </div>
+            <div key="vehicle-status" className="overflow-hidden">
                 <VehicleStatusCard />
+            </div>
+            <div key="vehicle-vitals" className="overflow-hidden">
                 <VehicleVitalsCard />
-              </div>
-              <AttackDetailsCard />
-              <MapCard />
-              <VehicleDetailsCard />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <PerformanceChart />
-                 <QuickActionsCard />
-              </div>
             </div>
-            <div className="lg:col-span-1 space-y-6">
-              <ThreatsCard />
-              <AiChatCard />
+            <div key="attack-details" className="overflow-hidden">
+                <AttackDetailsCard />
             </div>
-          </div>
+            <div key="map" className="overflow-hidden">
+                <MapCard />
+            </div>
+            <div key="vehicle-details" className="overflow-hidden">
+                <VehicleDetailsCard />
+            </div>
+            <div key="performance-chart" className="overflow-hidden">
+                <PerformanceChart />
+            </div>
+            <div key="quick-actions" className="overflow-hidden">
+                <QuickActionsCard />
+            </div>
+            <div key="threats" className="overflow-hidden">
+                <ThreatsCard />
+            </div>
+            <div key="ai-chat" className="overflow-hidden">
+                <AiChatCard />
+            </div>
+          </ResponsiveGridLayout>
         </main>
       </SidebarInset>
     </SidebarProvider>

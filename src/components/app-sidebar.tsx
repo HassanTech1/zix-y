@@ -33,6 +33,7 @@ const SidebarHeaderContent = () => {
           <h1 className="text-lg font-bold text-sidebar-primary">ALHASAN AI</h1>
         )}
       </div>
+       {state === 'expanded' && <Button variant="ghost" size="icon" className="h-7 w-7" onClick={toggleSidebar}><ChevronsRightLeft /></Button>}
     </div>
   )
 }
@@ -153,7 +154,7 @@ const CtaCard = () => {
 
 export function AppSidebar() {
   return (
-    <Sidebar variant="floating" collapsible="none">
+    <Sidebar variant="floating" collapsible="icon">
       <SidebarHeader>
         <SidebarHeaderContent />
         <SidebarProfile />

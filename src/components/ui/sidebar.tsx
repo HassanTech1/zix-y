@@ -220,7 +220,7 @@ const Sidebar = React.forwardRef<
           variant === 'floating' && 'm-2'
         )}
         data-state={state}
-        data-collapsible={"none"}
+        data-collapsible={collapsible}
         data-variant={variant}
         data-side={side}
       >

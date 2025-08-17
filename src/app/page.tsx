@@ -25,16 +25,16 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 export default function DashboardPage() {
   const [layouts, setLayouts] = useState({
     lg: [
-      { i: "threat-summary", x: 0, y: 0, w: 12, h: 2 },
-      { i: "vehicle-status", x: 0, y: 2, w: 3, h: 6 },
-      { i: "vehicle-vitals", x: 3, y: 2, w: 3, h: 6 },
-      { i: "threats", x: 6, y: 2, w: 6, h: 6 },
-      { i: "attack-details", x: 0, y: 8, w: 6, h: 7 },
-      { i: "ai-chat", x: 6, y: 8, w: 6, h: 7 },
-      { i: "map", x: 0, y: 15, w: 12, h: 10 },
-      { i: "vehicle-details", x: 0, y: 25, w: 12, h: 9 },
-      { i: "performance-chart", x: 0, y: 34, w: 6, h: 8 },
-      { i: "quick-actions", x: 6, y: 34, w: 6, h: 8 },
+      { i: "threat-summary", x: 0, y: 0, w: 12, h: 3 },
+      { i: "vehicle-status", x: 0, y: 3, w: 3, h: 7 },
+      { i: "vehicle-vitals", x: 3, y: 3, w: 3, h: 7 },
+      { i: "threats", x: 6, y: 3, w: 6, h: 7 },
+      { i: "attack-details", x: 0, y: 10, w: 6, h: 8 },
+      { i: "ai-chat", x: 6, y: 10, w: 6, h: 8 },
+      { i: "map", x: 0, y: 18, w: 12, h: 12 },
+      { i: "vehicle-details", x: 0, y: 30, w: 12, h: 10 },
+      { i: "performance-chart", x: 0, y: 40, w: 6, h: 9 },
+      { i: "quick-actions", x: 6, y: 40, w: 6, h: 9 },
     ],
   });
 

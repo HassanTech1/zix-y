@@ -155,12 +155,6 @@ export function AppSidebar() {
                   <span>Invoices</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Wallet">
-                  <Wallet />
-                  <span>Wallet</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
                <SidebarMenuItem>
                 <SidebarMenuButton tooltip="Notification">
                   <Bell />

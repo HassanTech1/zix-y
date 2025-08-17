@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -114,7 +115,7 @@ const SidebarProvider = React.forwardRef<
 
     // We add a state so that we can do data-state="expanded" or "collapsed".
     // This makes it easier to style the sidebar with Tailwind classes.
-    const state = open ? "expanded" : "collapsed"
+    const state = isMobile ? 'expanded' : (open ? "expanded" : "collapsed");
 
     const contextValue = React.useMemo<SidebarContext>(
       () => ({
@@ -219,7 +220,7 @@ const Sidebar = React.forwardRef<
           variant === 'floating' && 'm-2'
         )}
         data-state={state}
-        data-collapsible={state === "collapsed" ? collapsible : ""}
+        data-collapsible={"none"}
         data-variant={variant}
         data-side={side}
       >
@@ -231,19 +232,11 @@ const Sidebar = React.forwardRef<
               : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
             variant === "floating" || variant === "inset"
               ? "group-data-[collapsible=icon]:w-[var(--sidebar-width-icon)]"
-              : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l",
+              : "group-data-[collapsible=icon]:w-[var(--sidebar-width-icon)] group-data-[side=left]:border-r group-data-[side=right]:border-l",
             variant === "floating" && "rounded-xl border shadow m-2",
             className
           )}
           {...props}
-          onClick={(e) => {
-            const isButton = (e.target as HTMLElement).closest('button');
-            const isCollapsibleTrigger = (e.target as HTMLElement).closest('[data-radix-collection-item]');
-
-            if (state === 'collapsed' && !isButton && !isCollapsibleTrigger) {
-                toggleSidebar();
-            }
-          }}
         >
           <div
             data-sidebar="sidebar"

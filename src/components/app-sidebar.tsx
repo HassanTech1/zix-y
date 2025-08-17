@@ -24,7 +24,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collap
 
 
 const SidebarHeaderContent = () => {
-  const { toggleSidebar, state } = useSidebar();
+  const { state } = useSidebar();
   return (
     <div className="flex items-center justify-between p-2">
       <div className="flex items-center gap-2">
@@ -36,9 +36,6 @@ const SidebarHeaderContent = () => {
           </Avatar>
         )}
       </div>
-      <Button variant="ghost" size="icon" className="h-8 w-8 group-data-[state=collapsed]:hidden" onClick={toggleSidebar}>
-        <ChevronsRightLeft />
-      </Button>
     </div>
   )
 }

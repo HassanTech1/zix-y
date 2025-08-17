@@ -56,6 +56,7 @@ const SidebarProfile = () => {
 }
 
 const SubMenu = () => {
+    const { state } = useSidebar();
     const [isOpen, setIsOpen] = React.useState(true);
     return (
         <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
@@ -65,7 +66,7 @@ const SubMenu = () => {
                         <LayoutGrid />
                         <span>Dashboard</span>
                     </div>
-                    <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                    {state === 'expanded' && <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />}
                 </SidebarMenuButton>
             </CollapsibleTrigger>
             <CollapsibleContent>
@@ -93,6 +94,28 @@ const Messages = () => {
     { name: "Emily Smith", avatar: "https://placehold.co/32x32.png", hint: "woman portrait" },
     { name: "Arthur Adek", avatar: "https://placehold.co/32x32.png", hint: "person portrait" },
   ];
+  
+  if (state === 'collapsed') {
+    return (
+        <SidebarGroup>
+            <SidebarGroupLabel>MESSAGES</SidebarGroupLabel>
+            <SidebarGroupContent>
+                 <SidebarMenu>
+                    {messages.map(message => (
+                        <SidebarMenuItem key={message.name}>
+                        <SidebarMenuButton tooltip={message.name}>
+                            <Avatar className="h-6 w-6">
+                            <AvatarImage src={message.avatar} alt={message.name} data-ai-hint={message.hint}/>
+                            <AvatarFallback>{message.name.charAt(0)}</AvatarFallback>
+                            </Avatar>
+                        </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    ))}
+                </SidebarMenu>
+            </SidebarGroupContent>
+        </SidebarGroup>
+    )
+  }
 
   return (
     <SidebarGroup>

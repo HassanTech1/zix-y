@@ -28,11 +28,7 @@ const SidebarHeaderContent = () => {
   return (
     <div className="flex items-center justify-between p-2">
       <div className="flex items-center gap-2">
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
-          <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-        </div>
+        
         {state === 'expanded' && (
           <Avatar className="h-8 w-8">
             <AvatarImage src="https://placehold.co/100x100.png" alt="Andrew Smith" data-ai-hint="person portrait" />

@@ -1,7 +1,6 @@
 
 "use client"
 import React from "react";
-import Link from "next/link";
 import {
   Sidebar,
   SidebarContent,
@@ -10,42 +9,37 @@ import {
   SidebarMenuButton,
   SidebarFooter,
   SidebarHeader,
-  SidebarTitle,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarGroupContent,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Icons } from "@/components/icons";
-import { Home, Shield, Search, Book, Ticket, Bot, Siren, Settings, LayoutGrid, FileText, Wallet, Bell, MessageSquare, Plus, ChevronRight, ChevronDown, ChevronsRightLeft } from "lucide-react";
+import { FileText, Bot, Plus, ChevronRight, LayoutGrid, Bell } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "./ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
+import { Icons } from "./icons";
 
 
 const SidebarHeaderContent = () => {
-  const { toggleSidebar } = useSidebar();
+  const { state, toggleSidebar } = useSidebar();
+  if (state === 'collapsed') return null;
+
   return (
     <div className="flex items-center justify-between p-4">
-      <div className="flex items-center gap-2">
-        <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-red-500"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500"></div>
-        </div>
-      </div>
+        <Icons.logo className="w-24 text-sidebar-primary" />
        <Button variant="ghost" size="icon" className="h-7 w-7 text-sidebar-foreground/70 hover:text-sidebar-foreground" onClick={toggleSidebar}>
-        <ChevronRight className="group-data-[state=expanded]:rotate-180 transition-transform"/>
+        <ChevronRight className="transition-transform duration-300 group-data-[state=expanded]:rotate-180"/>
        </Button>
     </div>
   )
 }
 
 const SidebarProfile = () => {
-  const { state } = useSidebar();
+  const { state, toggleSidebar } = useSidebar();
   if (state === 'collapsed') return (
     <div className="p-4">
-       <Avatar className="h-10 w-10 mx-auto">
+       <Avatar className="h-10 w-10 mx-auto cursor-pointer" onClick={toggleSidebar}>
           <AvatarImage src="https://placehold.co/100x100.png" alt="Andrew Smith" data-ai-hint="man portrait"/>
           <AvatarFallback>AS</AvatarFallback>
         </Avatar>
@@ -69,6 +63,14 @@ const SidebarProfile = () => {
 const SubMenu = () => {
     const { state } = useSidebar();
     const [isOpen, setIsOpen] = React.useState(true);
+
+    // Automatically collapse submenu when sidebar collapses
+    React.useEffect(() => {
+        if (state === 'collapsed') {
+            setIsOpen(false);
+        }
+    }, [state]);
+
     return (
         <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
             <CollapsibleTrigger asChild>
@@ -77,11 +79,11 @@ const SubMenu = () => {
                         <LayoutGrid />
                         <span>Dashboard</span>
                     </div>
-                    {state === 'expanded' && <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />}
+                    <ChevronRight className={`h-4 w-4 transition-transform duration-200 group-data-[state=expanded]:-rotate-90 ${isOpen ? '-rotate-90' : 'rotate-0'}`} />
                 </SidebarMenuButton>
             </CollapsibleTrigger>
             <CollapsibleContent>
-                <SidebarMenu isSubmenu={true}>
+                 <SidebarMenu isSubmenu={true}>
                     <SidebarMenuItem>
                         <SidebarMenuButton href="#" size="sm" className="w-full justify-start">Activity</SidebarMenuButton>
                     </SidebarMenuItem>
@@ -119,6 +121,7 @@ const Messages = () => {
                             <AvatarImage src={message.avatar} alt={message.name} data-ai-hint={message.hint}/>
                             <AvatarFallback>{message.name.charAt(0)}</AvatarFallback>
                             </Avatar>
+                            <span className="sr-only">{message.name}</span>
                         </SidebarMenuButton>
                         </SidebarMenuItem>
                     ))}
@@ -176,7 +179,7 @@ const CtaCard = () => {
 
 export function AppSidebar() {
   return (
-    <Sidebar variant="floating" collapsible="icon">
+    <Sidebar variant="floating" collapsible="icon" defaultOpen={true}>
       <SidebarHeader>
         <SidebarHeaderContent />
         <SidebarProfile />
@@ -218,3 +221,5 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
+
+    
